@@ -1,13 +1,32 @@
 #!/bin/bash
-echo 'file name' 
+
+# Prompt the user to enter the file name
+echo "Enter file name: "
 read file_name
-echo '#!/bin/bash' > ${file_name}
-echo 'task solution'
+
+# Create a new file with the given name
+echo "#!/bin/bash" > "$file_name"
+
+# Prompt the user to enter the task solution
+echo "Enter task solution:"
 read task_solution
-echo ${task_solution}  >> ${file_name}
-echo 'enter you commit' 
+
+# Append the task solution to the file
+echo "$task_solution" >> "$file_name"
+
+# Prompt the user to enter the commit message
+echo "Enter your commit message:"
 read commit
+
+# Add all changes to the Git repository
 git add .
-git commit -m '${commit}'
+
+# Perform a commit with the provided commit message
+git commit -m "$commit"
+
+# Push the changes to the remote repository
 git push
-chmod u+x ${file_name}
+
+# Set the executable permission on the file
+chmod u+x "$file_name"
+
