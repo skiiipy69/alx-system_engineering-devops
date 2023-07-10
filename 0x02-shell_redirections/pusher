@@ -1,0 +1,13 @@
+#!/bin/bash
+echo 'file name' 
+read file_name
+echo '#!/bin/bash' > ${file_name}
+echo 'task solution'
+read task_solution
+echo ${task_solution}  >> ${file_name}
+echo 'enter you commit' 
+read commit
+git add .
+git commit -m '${commit}'
+git push
+chmod u+x ${file_name}
