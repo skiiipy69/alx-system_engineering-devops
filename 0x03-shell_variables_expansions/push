@@ -1,30 +1,20 @@
-#!/bin/bash
-
 # Prompt the user to enter a file name
 echo "Enter file name: "
 read file_name
 
 # Create a new file with the provided name and set it as executable
 echo "#!/bin/bash" > "$file_name"
-chmod +x "$file_name"
+chmod u+x "$file_name"
 
-# Prompt the user to enter a task solution
-echo "Enter task solution:"
-read task_solution
-
-# Append the task solution to the file
-echo "$task_solution" >> "$file_name"
+vi "$file_name"
 
 # Prompt the user to enter a commit message
 
 echo "Enter your commit message:"
 read commit
 
-# Set the executable permission on the file
-chmod +x "$file_name"
-
 # Add the file to Git
-git add "$file_name"
+git add .
 
 # Perform a commit with the provided commit message
 git commit -m "$commit"
