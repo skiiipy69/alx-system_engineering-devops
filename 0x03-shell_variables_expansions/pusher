@@ -1,11 +1,12 @@
+#!/bin/bash
+
 # Prompt the user to enter a file name
 echo "Enter file name: "
 read file_name
 
-# Create a new file with the provided name and set it as executable
-echo "#!/bin/bash" > "$file_name"
+echo '#!/bin/bash' > "$file_name"
 chmod u+x "$file_name"
-
+echo '' >> "$file_name"
 vi "$file_name"
 
 # Prompt the user to enter a commit message
