@@ -1,9 +1,4 @@
-#!/usr/bin/env bash
-# How to connect to a server
+#!/usr/bin/env bash 
+# Connects to server 100.26.172.246 with key in ~/.ssh/school 
 
-hostname="100.26.172.246"
-#private_key="~/.ssh/school"
-user="ubuntu"
-
-ssh "$user"@"$hostname" -i ~/.ssh/school
-
+ssh -i ~/.ssh/school ubuntu@100.26.172.246
