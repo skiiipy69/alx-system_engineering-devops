@@ -1,0 +1,23 @@
+global
+        log /dev/log    local0
+	stats socket /run/haproxy/admin.sock mode 660 level admin
+
+defaults
+        log     global
+        mode    http
+        option  httplog
+	timeout connect  10s
+	timeout client  30s
+	timeout server  30s
+
+frontend zouhairel-tech-frontend
+	bind *:80
+	bind *:443 ssl crt /etc/haproxy/certs/zouhairel.tech.pem
+	http-request redirect scheme https unless { ssl_fc }
+	http-request set-header X-Forwarded-Proto https
+	default_backend zouhairel-tech-backend
+
+backend zouhairel-tech-backend
+	balance roundrobin
+	server 453-web-01 100.26.172.246:80 check
+	server 453-web-02 54.88.51.150:80 check
